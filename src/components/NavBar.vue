@@ -25,35 +25,23 @@ import Prism from 'prismjs'
 
 
 function sayCode() {
-
+    // goofy ahh string lmao
+    // btw this is the export formation im following for block code exports
     const code: string = `
 (async () => {
-    const Discord = require("discord.js")
-    const devMode = typeof __E_IS_DEV !== "undefined" && __E_IS_DEV
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-    const s4d = {
-        Discord,
-        database: new Database(\`\${devMode ? S4D_NATIVE_GET_PATH : "."}/db.json\`),
-        joiningMember: null,
-        reply: null,
-        tokenInvalid: false,
-        tokenError: null,
-        checkMessageExists() {
-            if (!s4d.client) throw new Error('You cannot perform message operations without a Discord.js client')
-            if (!s4d.client.readyTimestamp) throw new Error('You cannot perform message operations while the bot is not connected to the Discord API')
-            }
-        }
-        s4d.client = new s4d.Discord.Client({
-        intents: [Object.values(s4d.Discord.Intents.FLAGS).reduce((acc, p) => acc | p, 0)],
-            partials: ["REACTION"]
-            })
-            ${javascriptGenerator.workspaceToCode(Blockly.getMainWorkspace())}
-    return s4d
-    })()`
+    const discord = require("discord.js")
+    const client = new Discord.Client({
+        intents: Object.values(discord.Intents.FLAGS),
+        partials: ["REACTION"]
+    })
+    ${javascriptGenerator.workspaceToCode(Blockly.getMainWorkspace()).split('\n').join('\n    ')}
+})()`
 
     Swal.fire({
         title: '<strong class=\"text-white\">JavaScript Code</strong>',
-        html: `<pre data-example-id="customHtml" data-codepen-css-external="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" class="code" style="text-align: start; word-wrap: break-word; overflow: auto">
+        html: `
+        <pre data-example-id="customHtml" data-codepen-css-external="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" class="code" style="text-align: start; word-wrap: break-word; overflow: auto">
             <code style="word-wrap: break-word;">
                 ${Prism.highlight(code, Prism.languages.javascript, 'javascript')}
             </code>
@@ -69,7 +57,7 @@ function sayCode() {
 
 
 <style scoped>
-/* This style is scoped, first we styling the entire navBar */
+/* This style is scoped, first we style the entire navBar */
 .topnav {
     font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     position: absolute;
