@@ -80,7 +80,7 @@ Vue.mixin({
                     drag: true,
                     wheel: true
                 },
-                toolbox: toolbox(Blockly, val)
+                toolbox: toolbox(val)
             });
 
             Blockly.Xml.domToWorkspace(dom, newWorkspace);
@@ -171,6 +171,9 @@ Vue.mixin({
             if (!s4d.client.readyTimestamp) throw new Error('You cannot perform message operations while the bot is not connected to the Discord API')
         }
     };
+
+    // check if d.js is v13
+    if(!require('./package.json').dependencies['discord.js'].includes("13.")) console.log("Seems you arent using v13 please run \`npm i discord.js@13.12.0\`");
 
     // create a new discord client
     s4d.client = new s4d.Discord.Client({
