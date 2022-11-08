@@ -6,7 +6,7 @@
       @change="load"
       id="load-code"
       type="file"
-      accept=".s4d,.zip,.xml"
+      accept=".s4d,.zip,.xml,.json"
     />
     <b-dropdown-item v-b-modal.code-modal>{{ $t("file.javascript") }}</b-dropdown-item>
     <b-dropdown-item @click="copy">{{ $t("file.copy") }}</b-dropdown-item>
@@ -223,11 +223,24 @@ export default {
             );
             return;
           }
+          if (file.type == "text/json") {
+            const decoder = new TextDecoder("utf-8");
+            const raw = decoder.decode(e.target.result);
+            const json = JSON.parse(raw);
+            Blockly.serialization.workspaces.load(
+              json,
+              window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e
+            );
+            return;
+          }
           JSZip.loadAsync(e.target.result)
             .then(async (data) => {
               const dataObject = {};
               if (data.file("blocks.xml")) {
                 dataObject.xml = await data.file("blocks.xml").async("string");
+              }
+              if (data.file("blocks.json")) {
+                dataObject.json = await data.file("blocks.json").async("string");
               }
               if (data.file("customBlocks.json")) {
                 dataObject.customBlocks = await data
@@ -239,11 +252,20 @@ export default {
             .then((dataobj) => {
               if (dataobj.xml == null) return;
               function load() {
-                const xml = Blockly.Xml.textToDom(dataobj.xml);
-                Blockly.Xml.domToWorkspace(
-                  xml,
-                  window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e
-                );
+                if (dataobj.xml) {
+                  const xml = Blockly.Xml.textToDom(dataobj.xml);
+                  Blockly.Xml.domToWorkspace(
+                    xml,
+                    window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e
+                  );
+                }
+                if (dataobj.json) {
+                  const json = JSON.parse(dataobj.json);
+                  Blockly.serialization.workspaces.load(
+                    json,
+                    window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e
+                  );
+                }
               }
               if (dataobj.customBlocks == null) {
                 load();
@@ -272,15 +294,11 @@ export default {
     },
     save() {
       const zip = new JSZip();
-      const xmlContent = Blockly.Xml.domToPrettyText(
-        Blockly.Xml.workspaceToDom(
-          window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e
-        )
-      );
+      const jsonContent = Blockly.serialization.workspaces.save(window.blocklyWorkspaceThatIneedtoUseForThingsLaigwef9o8wifnwp4e)
       const fileName = `${encodeURIComponent(
         document.querySelector("#docName").textContent
       ).replace(/%20/g, " ")}.s4d`;
-      zip.file("blocks.xml", xmlContent);
+      zip.file("blocks.json", jsonContent);
       if (window.saveCustomBlocksOutput.length > 0) {
         zip.file(
           "customBlocks.json",

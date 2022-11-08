@@ -276,9 +276,9 @@ export default {
                 }
                 if(result){
                     const zip = new JSZip();
-                    const xmlContent = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
+                    const jsonContent = Blockly.serialization.workspaces.save(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
                     const fileName = `${encodeURIComponent(document.querySelector("#docName").textContent).replace(/%20/g, " ")}.zip`;
-                    zip.file("blocks.xml", xmlContent);
+                    zip.file("blocks.json", jsonContent);
                     const javascriptContent = this.getWorkspaceCode();
                     if (javascriptContent.includes("queue.join") && javascriptContent.includes("queue.connect")) {
                         swal.fire("Sorry, but Retro and Jose music blocks do not work together.")
