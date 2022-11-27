@@ -1,16 +1,16 @@
 {
-  "name": "scratch-for-discord",
-  "version": "469.13.0",
+  "name": "cocrea-code",
+  "version": "1.0.0",
   "private": true,
   "licenses": [
     {
-      "your mom": "https://discord.gg/8Eteb7Pp3j"
+      "your mom": ""
     },
     {
-      "s4d": "https://scratch-for-discord.netlify.app/"
+      "cc": ""
     },
     {
-      "this is a joke writen by": "redman13"
+      "this is a joke writen by": "perlinnoise"
     },
     {
       "jeremy happy": "https://cdn.discordapp.com/emojis/1011199683537948722.png"
@@ -106,7 +106,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "description": "🐱 Make your Discord bot using Scratch blocks! [Scratch For Discord](https://scratch-for-discord.netlify.com) is an advanced fork of [discord-blocks](https://discordblocks.leondrolio.com/). Thanks to [7coil](https://github.com/7coil) for their great work!",
+  "description": "🐱 Make your Discord bot using Scratch blocks!",
   "main": "babel.config.js",
   "directories": {
     "example": "examples"

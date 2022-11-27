@@ -2,7 +2,7 @@
     <b-navbar toggleable="lg" type="dark" style="background-color:#161719;user-select:none;" id="navbar nav-main">
         <b-navbar-brand style="font-size: 120%;">
             <button id="hideAllGuiElements" class="hide-gui-button"><img :src="decideNavBarImage" width="35" draggable="false" id="navigationBarS4DImage"></button>
-            Scratch For Discord
+            Cocrea Code
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -108,7 +108,7 @@ export default {
             if (document.querySelector("#docName").textContent == "") {
                 document.querySelector("#docName").textContent = "Untitled document"
             }
-            document.title = `Scratch For Discord 469 - ${document.querySelector("#docName").textContent}`;
+            document.title = `Cocrea Code 469 - ${document.querySelector("#docName").textContent}`;
         }, false);
         const element = document.querySelector("#docName");
         element.spellcheck = false;
@@ -120,7 +120,6 @@ export default {
         this.setLanguage("en");
         let url = window.location.href
         window.onload = function () {
-            if (url.includes("deploy-preview-469--scratch-for-discord.netlify.app") && !url.includes("#force")) location.href = "https://scratch-for-discord-469.vercel.app/";
             if (url.includes("#snd=")) {
                 let soundlink = url.substring(url.indexOf("#snd=") + 5, url.lastIndexOf("#")).replaceAll('"', "").replaceAll("\n", "")
                 const audio = new Audio(soundlink)
@@ -161,7 +160,7 @@ export default {
                 },
             })
             function preloadImage(url, appendS4dUrl) {
-                if (appendS4dUrl) url = "https://scratch-for-discord.com/spooky/" + url
+                if (appendS4dUrl) url = "" + url
                 const pl = document.createElement("img")
                 pl.src = url
                 pl.style.width = "1px"
@@ -173,7 +172,7 @@ export default {
                 document.body.append(pl)
             }
             function preloadAudio(url, appendS4dUrl) {
-                if (appendS4dUrl) url = "https://scratch-for-discord.com/spooky/" + url
+                if (appendS4dUrl) url = "" + url
                 const pl = document.createElement("audio")
                 pl.preload = "auto"
                 pl.style.width = "1px"
@@ -336,7 +335,7 @@ load()`);
                   zip.file("database.json", "{}");
                   */
                     zip.file("package.json", `{\n
-                        "name": "scratch-for-discord-bot",\n
+                        "name": "cocrea-code-bot",\n
                         "version": "1.0.0",\n
                         "main": "index.js",\n
                         "scripts": {\n
@@ -367,13 +366,13 @@ load()`);
                         window.URL.revokeObjectURL(url);
                         document.body.removeChild(a);
                     });
-            console.log("barry: well we are done, lets get back to managing the blocks")
-            console.log("johnathan: ok")
+            console.log("well we are done, lets get back to managing the blocks")
+            console.log("ok")
                 }
                 else
                 {
                     
-            console.log("barry: nvm lol")
+            console.log("nvm lol")
                 }
             });
         },
@@ -1829,7 +1828,7 @@ load()`])
                     } else if (
                         customBlocksHasAMcxdondalldakdoij9()
                     ) {
-                        swal.fire("Your bot contains custom blocks.", "Custom blocks are currently unsupported for the run button. Please remove them before continuing.", "error")
+                        swal.fire("Your bot contains custom blocks.", "Custom blocks are currently unsupported for the run button. Please remove them before continuing. You can download and run the bot if you prefer that option.", "error")
                         console.log("barry: this mf got custom blocks")
                         console.log("johnathan: dayumm")
                         console.error("barry and johnathan found out you are epic gamer...")
@@ -1837,7 +1836,7 @@ load()`])
                     } else if (
                         window.isInS4DDebugMode == true
                     ) {
-                        swal.fire("S4D is currently in debug mode.", "Please disable debug mode to run your bot.", "error")
+                        swal.fire("The app is currently in debug mode.", "Please disable debug mode to run your bot.", "error")
                         console.log("barry: placeholder")
                         console.log("johnathan: placeholder")
                         console.error("placeholder")
@@ -1854,10 +1853,10 @@ load()`])
                     // }
                     let api_key = process.env.VUE_APP_KEY
                     let modifiedJScontent = javascriptContent.replaceAll("const S4D_APP_RUN_BUTTON = false", "const S4D_APP_RUN_BUTTON = true")
-                    console.log("barry: done")
-                    console.log("johnathan: ok go send the post request")
-                    console.log("barry: ok")
-                    console.log("epic server: now going to be sending POST request to JeremyGamer13s dumb and insecure API!!1!1!!")
+                    console.log("done")
+                    console.log("ok go send the post request")
+                    console.log("ok")
+                    console.log(" now going to be sending POST request to JeremyGamer13s dumb and insecure API!!1!1!!")
                     const requestOptions = {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -1871,7 +1870,7 @@ load()`])
                         if (api_key == null) {
                             swal.fire(
                                 "Cool! However..",
-                                `The bot would have been sent,<br><aew3f2 style="color:#188DC8">but the server S4D is currently running on does not have an API key present.</aew3f2><br><br><p>Using Netlify? <a href="https://scratch-for-discord-469.vercel.app/">Click here to go to Vercel!</a></p><!--<br><h6 style="color:#188DC8">This menu popped up because the API key is not present.</h6>-->`,
+                                `The bot would have been sent,<br><aew3f2 style="color:#188DC8">but the server S4D is currently running on does not have an API key present.</aew3f2><br><br><p>Using Netlify? <a href="">Click here to do nothing!</a></p><!--<br><h6 style="color:#188DC8">This menu popped up because the API key is not present.</h6>-->`,
                                 "info"
                             )
                             console.log("epic server: POST request pretended to be sent to JeremyGamer13s dumb and insecure API😀😁😀👍😁👍👍👍")

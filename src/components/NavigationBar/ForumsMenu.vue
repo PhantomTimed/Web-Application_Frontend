@@ -70,7 +70,7 @@ function loadForumsPage(page, div) {
         case 'register':
             div.innerHTML = `
 <br>
-<h3>Create an S4D Forums account</h3>
+<h3>Create an Cocrea Code Forums account</h3>
 <i class="fa-solid fa-user"></i> <input type="text" id="s4d_forums_username_input" placeholder="Username">
 <br>
 <i class="fa-solid fa-key"></i> <input type="password" id="s4d_forums_password_input" placeholder="Password">
@@ -83,7 +83,7 @@ function loadForumsPage(page, div) {
 <br>
 <br>
 <br>
-<p style="color:rgb(100,100,100)"><i>Note: These forums accounts are for 469 forums only. Don't worry about getting perm-banned in future S4D just because you got perm-banned on here.</i></p>
+<p style="color:rgb(100,100,100)"><i>Note: These forums accounts are for 469 forums only. Don't worry about getting perm-banned in future CC just because you got perm-banned on here.</i></p>
 `
             document.getElementById("s4d_forums_register_button").onclick = () => {
                 const displaySpinner = document.getElementById("s4d_forums_register_displayLoadingSpinner")
@@ -122,7 +122,7 @@ function loadForumsPage(page, div) {
         case 'login':
             div.innerHTML = `
 <br>
-<h3>Login to your S4D Forums account</h3>
+<h3>Login to your Cocrea Code Forums account</h3>
 <i class="fa-solid fa-user"></i> <input type="text" id="s4d_forums_username_input" placeholder="Username">
 <br>
 <i class="fa-solid fa-key"></i> <input type="password" id="s4d_forums_password_input" placeholder="Password">
@@ -135,7 +135,7 @@ function loadForumsPage(page, div) {
 <br>
 <br>
 <br>
-<p style="color:rgb(100,100,100)"><i>Note: These forums accounts are for 469 forums only. Don't worry about getting perm-banned in future S4D just because you got perm-banned on here.</i></p>
+<p style="color:rgb(100,100,100)"><i>Note: These forums accounts are for 469 forums only. Don't worry about getting perm-banned in future CC just because you got perm-banned on here.</i></p>
 `
             document.getElementById("s4d_forums_login_button").onclick = () => {
                 const displaySpinner = document.getElementById("s4d_forums_login_displayLoadingSpinner")
